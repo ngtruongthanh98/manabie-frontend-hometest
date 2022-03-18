@@ -63,6 +63,7 @@ const ToDo: React.FunctionComponent = () => {
 
   const onDeleteAllTodo = () => {
     dispatch(deleteAllTodos());
+    setValue('');
   };
 
   const showTodos =
@@ -94,6 +95,7 @@ const ToDo: React.FunctionComponent = () => {
           placeholder="What need to be done?"
           onChange={onChangeTodo}
           onKeyDown={onCreateTodo}
+          value={value}
         />
       </div>
       <div className="ToDo__list">
