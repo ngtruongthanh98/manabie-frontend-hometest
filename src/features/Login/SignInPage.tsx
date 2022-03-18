@@ -1,9 +1,8 @@
-
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import {useDispatch} from 'react-redux'
-import {actLoginSuccess,actLoginFail} from '../../store/authActions'
+import { useDispatch } from 'react-redux';
+import { actLoginSuccess, actLoginFail } from '../../store/authActions';
 
 // material UI
 import { Grid } from '@material-ui/core';
@@ -19,36 +18,36 @@ import ButtonBase from '../../components/atoms/ButtonBase';
 // styles
 import useStyles from './styles';
 
-import Service from '../../service'
+import Service from '../../service';
 
 const Login: React.FunctionComponent = () => {
   const classes = useStyles();
 
   const [form, setForm] = useState({
     userId: '',
-    password: ''
+    password: '',
   });
   const history = useHistory();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const signIn = async () => {
     try {
-      const resp = await Service.signIn(form.userId, form.password)
-      if(resp){
-        localStorage.setItem('token', "true")
-        dispatch(actLoginSuccess())
+      const resp = await Service.signIn(form.userId, form.password);
+      if (resp) {
+        localStorage.setItem('token', 'true');
+        dispatch(actLoginSuccess());
       }
     } catch (er) {
-      dispatch(actLoginFail())
+      dispatch(actLoginFail());
     }
-  }
+  };
 
   const onChangeField = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist()
-    setForm(prev=>({
-        ...prev,
-        [e.target.name]: e.target.value
-    }))
-  }
+    e.persist();
+    setForm((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   return (
     <Grid

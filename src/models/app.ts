@@ -1,9 +1,9 @@
 export type IAuthState = {
-    ACCESS_TOKEN: string
-}
+  ACCESS_TOKEN: string;
+};
 
 type IRootState = {
-    auth: IAuthState;
+  auth: IAuthState;
 };
-  
+
 export default IRootState;

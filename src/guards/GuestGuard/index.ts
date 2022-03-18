@@ -1,1 +1,1 @@
-export { default } from './GuestGuard'
+export { default } from './GuestGuard';

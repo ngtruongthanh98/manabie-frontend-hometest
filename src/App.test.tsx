@@ -20,7 +20,6 @@ jest.mock('@material-ui/core/Snackbar', () => ({
   default: ({ children }: any) => <>{children}</>,
 }));
 
-
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useLayoutEffect: jest.requireActual('react').useEffect,
@@ -38,7 +37,7 @@ describe('APP COMPONENT', () => {
     wrapper = renderer.create(
       <Provider store={store}>
         <App />
-      </Provider>,
+      </Provider>
     );
   });
 

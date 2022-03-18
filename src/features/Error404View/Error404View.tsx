@@ -1,12 +1,20 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Button, Container, Typography, useTheme, useMediaQuery, makeStyles } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  Container,
+  Typography,
+  useTheme,
+  useMediaQuery,
+  makeStyles,
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
     minHeight: '100vh',
-    width:"100%",
+    width: '100%',
     display: 'flex',
     alignItems: 'center',
   },
@@ -15,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '150px',
     fontWeight: 700,
     color: '#252932',
-    textShadow: 'rgba(61, 61, 61, 0.3) 1px 1px, rgba(61, 61, 61, 0.2) 2px 2px, rgba(61, 61, 61, 0.3) 3px 3px;fontSize: 150',
+    textShadow:
+      'rgba(61, 61, 61, 0.3) 1px 1px, rgba(61, 61, 61, 0.2) 2px 2px, rgba(61, 61, 61, 0.3) 3px 3px;fontSize: 150',
   },
 }));
 
@@ -27,7 +36,12 @@ function Error404View() {
   return (
     <div className={classes.root}>
       <Container maxWidth="lg">
-        <Typography align="center" variant={mobileDevice ? 'h4' : 'h1'} color="textPrimary" className={classes.heading}>
+        <Typography
+          align="center"
+          variant={mobileDevice ? 'h4' : 'h1'}
+          color="textPrimary"
+          className={classes.heading}
+        >
           404
         </Typography>
         <Typography align="center" variant="subtitle2" color="textSecondary">

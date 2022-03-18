@@ -1,5 +1,5 @@
 body {
-  text-transform: lowercase!important;
+  text-transform: lowercase !important;
 }
 
 .App {
@@ -8,15 +8,14 @@ body {
   justify-content: center;
 }
 
-
 button:hover {
   opacity: 0.85;
 }
 button {
-  text-transform: none!important;
+  text-transform: none !important;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   width: 24px;
   height: 24px;
   box-shadow: none;
@@ -24,7 +23,7 @@ input[type="checkbox"] {
   outline: none;
 }
 
-input[type="checkbox"]:focus {
+input[type='checkbox']:focus {
   box-shadow: none;
   border: none;
   outline: none;
@@ -34,23 +33,22 @@ input {
   min-height: 36px;
   border: none;
   outline: none;
-  padding: 0 12px!important;
-  box-shadow: 2px 0 4px rgba(0,0,0, 0.2);
+  padding: 0 12px !important;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
 
 input:focus {
-  box-shadow: 1px 0 9px rgba(0,0,0, 0.25);
+  box-shadow: 1px 0 9px rgba(0, 0, 0, 0.25);
 }
 
 .ToDo__container {
-  border: 1px solid rgba(0,0,0, 0.13);
+  border: 1px solid rgba(0, 0, 0, 0.13);
   border-radius: 8px;
   width: 500px;
   margin-top: 5rem;
   padding: 24px;
-  box-shadow: 2px 2px 1px rgba(0,0,0, 0.09),
-              3px 2px 3px rgba(0,0,0, 0.05);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.09), 3px 2px 3px rgba(0, 0, 0, 0.05);
 }
 
 .Todo__creation {
@@ -98,7 +96,8 @@ input:focus {
   cursor: pointer;
 }
 
-.Todo__action, .Todo__delete {
+.Todo__action,
+.Todo__delete {
   width: 24px;
   height: 24px;
   flex-shrink: 0;

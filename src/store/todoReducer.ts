@@ -1,65 +1,68 @@
-import {Todo, TodoStatus} from '../models/todo';
+import { Todo, TodoStatus } from '../models/todo';
 import {
   AppActions,
   CREATE_TODO,
   DELETE_ALL_TODOS,
   DELETE_TODO,
   TOGGLE_ALL_TODOS,
-  UPDATE_TODO_STATUS
+  UPDATE_TODO_STATUS,
 } from './todoActions';
 
 export interface AppState {
-  todos: Array<Todo>
+  todos: Array<Todo>;
 }
 
 export const initialState: AppState = {
-  todos: []
-}
+  todos: [],
+};
 
 const todoReducer = (state = initialState, action: AppActions) => {
   switch (action.type) {
     case CREATE_TODO:
       return {
         ...state,
-        todos:[...state.todos,action.payload]
+        todos: [...state.todos, action.payload],
       };
     case UPDATE_TODO_STATUS:
       const index2 = state.todos.findIndex((todo) => todo.id === action.payload.todoId);
-      state.todos[index2].status = action.payload.checked ? TodoStatus.COMPLETED : TodoStatus.ACTIVE;
+      state.todos[index2].status = action.payload.checked
+        ? TodoStatus.COMPLETED
+        : TodoStatus.ACTIVE;
       return {
         ...state,
-        todos: state.todos
-      }
+        todos: state.todos,
+      };
     case TOGGLE_ALL_TODOS:
-      const tempTodos = state.todos.map((e)=>{
+      const tempTodos = state.todos.map((e) => {
         return {
           ...e,
-          status: action.payload ? TodoStatus.COMPLETED : TodoStatus.ACTIVE
-        }
-      })
+          status: action.payload ? TodoStatus.COMPLETED : TodoStatus.ACTIVE,
+        };
+      });
       return {
         ...state,
-        todos: tempTodos
-      }
+        todos: tempTodos,
+      };
     case DELETE_TODO:
-      const data = state.todos
-      const index = data.findIndex(item=>item.id===action.payload)
-      if(index===-1) return {
-        ...state
-      }
-      data.splice(index,1)
+      const data = state.todos;
+      const index = data.findIndex((item) => item.id === action.payload);
+      if (index === -1)
+        return {
+          ...state,
+        };
+      data.splice(index, 1);
       return {
         ...state,
-        todos:[...data]
-      }
+        todos: [...data],
+      };
     case DELETE_ALL_TODOS:
       return {
         ...state,
-        todos: []
-      }
+        todos: [],
+      };
     default:
       return state;
   }
-}
+};
 
 export default todoReducer;

@@ -8,9 +8,9 @@ type IStyles = {
   width?: string;
   bgColor?: string;
   bgHoverColor?: string;
-  fullWidth?:boolean;
+  fullWidth?: boolean;
   textColor?: string;
-  handleSubmit: ()=>void;
+  handleSubmit: () => void;
 };
 
 export type IButtonBaseProps = IStyles &
@@ -25,20 +25,30 @@ const useStyles = (props: IStyles) =>
       width: props.width,
       display: 'inline-block',
       '& button': {
-        marginTop: props.fullWidth?"20px":null,
-        width: props.fullWidth?"300px":null,
+        marginTop: props.fullWidth ? '20px' : null,
+        width: props.fullWidth ? '300px' : null,
         color: props.textColor,
         backgroundColor: props.bgColor,
         '&:hover ': {
-          color: "#2c3e50",
+          color: '#2c3e50',
           backgroundColor: props.bgHoverColor,
         },
       },
     },
   }));
 
-const ButtonBase = ({ text, width = 'auto', className, bgColor, bgHoverColor,textColor,fullWidth, handleSubmit, ...props }: IButtonBaseProps) => {
-  const classes = useStyles({ width, bgColor, bgHoverColor,textColor,fullWidth,handleSubmit })();
+const ButtonBase = ({
+  text,
+  width = 'auto',
+  className,
+  bgColor,
+  bgHoverColor,
+  textColor,
+  fullWidth,
+  handleSubmit,
+  ...props
+}: IButtonBaseProps) => {
+  const classes = useStyles({ width, bgColor, bgHoverColor, textColor, fullWidth, handleSubmit })();
   return (
     <div className={classes.root}>
       <Button fullWidth className={className} onClick={handleSubmit} {...props}>
