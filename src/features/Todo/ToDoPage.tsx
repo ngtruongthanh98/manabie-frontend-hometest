@@ -9,6 +9,7 @@ import {
   deleteAllTodos,
   updateTodoStatus,
   toggleTodoEditStatus,
+  editTodo,
 } from '../../store/todoActions';
 
 import Service from '../../service';
@@ -38,6 +39,8 @@ const ToDo: React.FunctionComponent = () => {
   useEffect(() => {
     (async () => {
       const resp = await Service.getTodos();
+
+      console.log('resp', resp);
       dispatch(setTodos(resp || []));
     })();
   }, [dispatch]);
@@ -94,6 +97,10 @@ const ToDo: React.FunctionComponent = () => {
     setValue(e.target.value);
   };
 
+  const onChangeEditTodo = (e: React.ChangeEvent<HTMLInputElement>, todoId: string) => {
+    dispatch(editTodo(todoId, e.target.value));
+  };
+
   return (
     <div className="ToDo__container">
       <div className="Todo__creation">
@@ -118,8 +125,9 @@ const ToDo: React.FunctionComponent = () => {
                 {todo.canEdit ? (
                   <TextFields
                     className="Todo__input"
-                    onChange={onChangeTodo}
-                    onKeyDown={onCreateTodo}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      onChangeEditTodo(e, todo.id)
+                    }
                     value={todo.content}
                     onBlur={() => {
                       onToggleEditStatus(todo.id, false);

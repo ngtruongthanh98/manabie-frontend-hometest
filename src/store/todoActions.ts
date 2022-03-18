@@ -7,6 +7,7 @@ export const DELETE_ALL_TODOS = 'DELETE_ALL_TODOS';
 export const TOGGLE_ALL_TODOS = 'TOGGLE_ALL_TODOS';
 export const UPDATE_TODO_STATUS = 'UPDATE_TODO_STATUS';
 export const TOGGLE_TODO_EDIT_STATUS = 'TOGGLE_TODO_EDIT_STATUS';
+export const EDIT_TODO = 'EDIT_TODO';
 
 export interface SetTodoAction {
   type: typeof SET_TODO;
@@ -72,6 +73,25 @@ export function toggleTodoEditStatus(todoId: string, canEdit: boolean): ToggleTo
 }
 
 //////////////
+export interface EditTodoAction {
+  type: typeof EDIT_TODO;
+  payload: {
+    todoId: string;
+    content: string;
+  };
+}
+
+export function editTodo(todoId: string, content: string): EditTodoAction {
+  return {
+    type: EDIT_TODO,
+    payload: {
+      todoId,
+      content,
+    },
+  };
+}
+
+//////////////
 export interface DeleteTodoAction {
   type: typeof DELETE_TODO;
   payload: string;
@@ -115,4 +135,5 @@ export type AppActions =
   | DeleteTodoAction
   | DeleteAllTodosAction
   | ToggleAllTodosAction
-  | ToggleTodoEditStatusAction;
+  | ToggleTodoEditStatusAction
+  | EditTodoAction;
