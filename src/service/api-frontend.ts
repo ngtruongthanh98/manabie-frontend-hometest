@@ -20,6 +20,7 @@ class ApiFrontend extends IAPI {
       status: TodoStatus.ACTIVE,
       id: shortid(),
       user_id: 'firstUser',
+      can_edit: false,
     } as Todo);
   }
 

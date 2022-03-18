@@ -8,7 +8,9 @@ import {
   toggleAllTodos,
   deleteAllTodos,
   updateTodoStatus,
+  toggleTodoEditStatus,
 } from '../../store/todoActions';
+
 import Service from '../../service';
 import { TodoStatus } from '../../models/todo';
 import { isTodoCompleted } from '../../utils';
@@ -32,6 +34,7 @@ const ToDo: React.FunctionComponent = () => {
   const [showing, setShowing] = useState<EnhanceTodoStatus>('ALL');
   const [value, setValue] = useState('');
   const history = useHistory();
+
   useEffect(() => {
     (async () => {
       const resp = await Service.getTodos();
@@ -55,6 +58,10 @@ const ToDo: React.FunctionComponent = () => {
 
   const onUpdateTodoStatus = (e: React.ChangeEvent<HTMLInputElement>, todoId: string) => {
     dispatch(updateTodoStatus(todoId, e.target.checked));
+  };
+
+  const onToggleEditStatus = (todoId: string, canEdit: boolean) => {
+    dispatch(toggleTodoEditStatus(todoId, canEdit));
   };
 
   const onToggleAllTodo = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -108,7 +115,21 @@ const ToDo: React.FunctionComponent = () => {
                   checked={isTodoCompleted(todo)}
                   onChange={(e) => onUpdateTodoStatus(e, todo.id)}
                 />
-                <span>{todo.content}</span>
+                {todo.canEdit ? (
+                  <TextFields
+                    className="Todo__input"
+                    onChange={onChangeTodo}
+                    onKeyDown={onCreateTodo}
+                    value={todo.content}
+                    onBlur={() => {
+                      onToggleEditStatus(todo.id, false);
+                    }}
+                  />
+                ) : (
+                  <span onDoubleClick={() => onToggleEditStatus(todo.id, true)}>
+                    {todo.content}
+                  </span>
+                )}
                 <ButtonBase handleSubmit={() => dispatch(deleteTodo(todo.id))} text="X" />
               </div>
             );

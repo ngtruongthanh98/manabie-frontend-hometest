@@ -9,6 +9,7 @@ export interface Todo {
   content: string;
   status: TodoStatus;
   created_date: string;
+  can_edit: boolean;
 }
 
 export type IRootState = {

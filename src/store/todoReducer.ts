@@ -6,6 +6,7 @@ import {
   DELETE_TODO,
   TOGGLE_ALL_TODOS,
   UPDATE_TODO_STATUS,
+  TOGGLE_TODO_EDIT_STATUS,
 } from './todoActions';
 
 export interface AppState {
@@ -43,6 +44,18 @@ const todoReducer = (state = initialState, action: AppActions) => {
         ...state,
         todos: tempTodos,
       };
+    case TOGGLE_TODO_EDIT_STATUS:
+      const tempTodos2 = state.todos.map((e) => {
+        return {
+          ...e,
+          canEdit: action.payload.canEdit,
+        };
+      });
+      return {
+        ...state,
+        todos: tempTodos2,
+      };
+
     case DELETE_TODO:
       const data = state.todos;
       const index = data.findIndex((item) => item.id === action.payload);
