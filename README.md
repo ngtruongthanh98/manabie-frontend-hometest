@@ -46,4 +46,8 @@ _We're excited that you're interested in joining Manabie. Below are the requirem
 -   Run `yarn start:fullstack` in case you are doing a fullstack test, else run `yarn start:frontend` to start this project in development mode.
 -   Sign in using username: `firstUser`, password: `example`
 
-Last updated: 2022/01/13
+Last updated: 2022/01/21
+
+### Deploy on: 
+https://laughing-hypatia-22b7a3.netlify.app/login
+
